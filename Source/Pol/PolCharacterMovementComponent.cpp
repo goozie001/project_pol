@@ -24,12 +24,20 @@ bool UPolCharacterMovementComponent::DoJump(bool bReplayingMoves)
 					currJumpState = Second;
 					break;
 				case Second:
-					Velocity.Z = Jump2ZVelocity;
+	 				Velocity.Z = Jump2ZVelocity;
 					currJumpState = Third;
 					break;
-				case Third:
-					Velocity.Z = Jump3ZVelocity;
-					currJumpState = First;
+				case Third: 
+					if (FMath::Abs(CharacterOwner->GetVelocity().Y) >= GetMaxSpeed()*Jump3MinSpeed)
+					{
+						Velocity.Z = Jump3ZVelocity;
+						currJumpState = First;
+					}
+					else
+					{
+						Velocity.Z = Jump1ZVelocity;
+						currJumpState = Second;
+					}
 					break;
 				default:
 					assert(!"Invalid JumpState Enum Value");
