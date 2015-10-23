@@ -8,7 +8,7 @@
 /**
  * 
  */
-UCLASS()
+UCLASS(Blueprintable)
 class UPolCharacterMovementComponent : public UCharacterMovementComponent
 {
 	GENERATED_UCLASS_BODY()
@@ -34,7 +34,12 @@ public:
 	UPROPERTY(Category = "Character Movement: Jumping / Falling", EditAnywhere, BlueprintReadWrite, meta = (DisplayName = "Min Third Jump Y Speed", ClampMin = "0", UIMin = "0", ClampMax = "1", UIMax = "1"))
 	float Jump3MinSpeed;
 
+	
+
 	virtual bool DoJump(bool bReplayingMoves) override;
+	
+
+	
 
 	void setCurrJumpState(JumpState state);
 

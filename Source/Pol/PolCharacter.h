@@ -15,6 +15,12 @@ public:
 	UPROPERTY(Category = "Character Movement: Jumping / Falling", EditAnywhere, BlueprintReadWrite, meta = (DisplayName = "Jump Reset Timer", ClampMin = "0", UIMin = "0"))
 	float JumpResetTimer;
 
+	UPROPERTY(Category = "Character Movement: Jumping / Falling", EditAnywhere, BlueprintReadWrite, meta = (DisplayName = "Slide Velocity", ClampMin = "0", UIMin = "0"))
+	float SlideVelocity;
+
+	UFUNCTION(BlueprintCallable, Category = "Slide")
+	void SlideDash_Implementation();
+
 	virtual void Landed(const FHitResult& Hit) override;
 	virtual void OnJumped_Implementation();
 

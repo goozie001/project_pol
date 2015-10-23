@@ -54,3 +54,12 @@ void UPolCharacterMovementComponent::setCurrJumpState(JumpState state)
 {
 	currJumpState = state;
 }
+
+
+
+
+
+
+
+
+

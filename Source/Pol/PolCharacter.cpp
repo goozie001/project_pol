@@ -5,6 +5,7 @@
 #include "PolCharacterMovementComponent.h"
 
 
+
 APolCharacter::APolCharacter(const FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer.SetDefaultSubobjectClass<UPolCharacterMovementComponent>(ACharacter::CharacterMovementComponentName))
 {}
@@ -23,4 +24,15 @@ void APolCharacter::ResetJumpState()
 {
 	UPolCharacterMovementComponent* movementComp = Cast<UPolCharacterMovementComponent>(CharacterMovement);
 	movementComp->setCurrJumpState(UPolCharacterMovementComponent::First);
+}
+
+void APolCharacter::SlideDash_Implementation()
+{
+	//if the character has the ability to jump(aka on ground) it can press down to slide forward instead
+	if (this->CanJump())
+	{
+		Cast<UPolCharacterMovementComponent>(CharacterMovement)->Velocity.Y = this->GetVelocity().Y*SlideVelocity;
+	}
+
+	
 }
